@@ -1,0 +1,15 @@
+services:
+  db:
+    env_file:
+      - .env
+    container_name: mariadb-10.11
+    image: mariadb:10.11
+    restart: always
+    volumes:
+      - ${MARIADB_VOLUME_DATA}:/var/lib/mysql
+    environment:
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+    ports:
+      - 3306:3306
